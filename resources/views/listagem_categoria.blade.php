@@ -9,27 +9,29 @@
   <body>
     <div class="container">
         <h1>Listagem de Categorias</h1>
-        <table class="table table-bordered table-striped table-hover">
+        <a href="novo">Nova Categoria</a>
+        <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                <th scope="col">#</th>
+                <th scope="col">ID</th>
                 <th scope="col">Descrição</th>
+                <th scope="col">Excluir</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($categorias as $categoria)
                     <tr>
-                        <th scope="row">{{$categoria->id}}</th>
-                        <td>{{$categoria->descricao}}</td>
+                    <th scope="row">{{ $categoria->id }}</th>
+                    <td>{{$categoria->descricao}}</td>
+                    <td><a href="excluir/{{$categoria->id}}">-</a></td>
                     </tr>
                 @endforeach
             </tbody>
-        </table>        
-    </div>
+            </table>        
+        <ul>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
-

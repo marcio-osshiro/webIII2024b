@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/categoria', [CategoriaController::class, 'listar']);
+Route::get('/ola', [CategoriaController::class, 'ola']);
+
+Route::get('/categoria/listar', [CategoriaController::class, 'listar']);
+
+Route::get('/categoria/novo', [CategoriaController::class, 'novo']);
+
+Route::post('/categoria/salvar', [CategoriaController::class, 'salvar']);
+
+Route::get('/categoria/excluir/{id}', [CategoriaController::class, 'excluir']);
