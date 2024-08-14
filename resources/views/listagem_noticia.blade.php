@@ -11,6 +11,7 @@
         <th scope="col">Autor</th>
         <th scope="col">Título</th>
         <th scope="col">Categoria</th>
+        <th scope="col">Imagem</th>
 
         <th scope="col">Editar</th>
         <th scope="col">Excluir</th>
@@ -20,10 +21,15 @@
         @foreach ($noticias as $noticia)
             <tr>
             <th scope="row">{{ $noticia->id }}</th>
-            <td>{{$noticia->data}}</td>
+            <td>{{$noticia->data->format('d/m/Y')}}</td>
             <td>{{$noticia->autor}}</td>
             <td>{{$noticia->titulo}}</td>
             <td>{{$noticia->categoria->descricao}}</td>
+            <td>
+              @if ($noticia->imagem != "")
+                <img src="/storage/imagens/{{$noticia->imagem}}" style="width: 40px">  
+              @endif
+            </td>
             <td><a class="btn btn-primary" href="editar/{{$noticia->id}}">+</a></td>
             <td><a class="btn btn-danger" onclick="return confirm('Confirme a remoção do registro?')" href="excluir/{{$noticia->id}}">-</a></td>
             </tr>

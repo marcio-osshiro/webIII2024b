@@ -12,6 +12,10 @@ class Noticia extends Model
     protected $table = 'noticia';
     public $timestamps = false;
 
+    protected $casts = [
+        'data' => 'date:Y-m-d',
+    ];    
+
     public function categoria(): BelongsTo
     {
         return $this->belongsTo(Categoria::class);

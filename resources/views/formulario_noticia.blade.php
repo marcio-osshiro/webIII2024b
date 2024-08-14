@@ -14,6 +14,11 @@
 
 
     <h1>Formulário de Noticia</h1>
+    @if ($noticia->imagem != "")
+    <img src="/storage/imagens/{{$noticia->imagem}}" style="height: 100px">  
+    @endif
+
+
     <form action="{{ url('noticia/salvar') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
@@ -24,7 +29,7 @@
         </div>
         <div class="mb-3">
             <label for="data" class="form-label">Data</label>
-            <input type="date" class="form-control" id="data" name="data" value="{{$noticia->data}}">
+            <input type="date" class="form-control" id="data" name="data" value="{{$noticia->data->format('Y-m-d')}}">
         </div>
         <div class="mb-3">
             <label for="autor" class="form-label">Autor</label>
@@ -44,7 +49,7 @@
 
         <div class="mb-3">
             <label for="categoria_id" class="form-label">Categoria</label>
-            <select name="categoria_id" id="categoria_id" class="form-control">
+            <select name="categoria_id" id="categoria_id" class="form-select">
                 @foreach($categorias as $categoria)
                     <option 
                     @if ($categoria->id == $noticia->categoria_id) 
