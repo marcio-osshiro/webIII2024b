@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Http\Requests\CategoriaRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class CategoriaController extends Controller
 {
@@ -26,6 +28,17 @@ class CategoriaController extends Controller
         } else {
             $categoria = Categoria::find($request->input('id'));
         }
+
+        if ($request->hasFile('arquivo')) {
+            $arquivo = $request->file('arquivo');
+            $nomeArquivo = $arquivo->store('public/imagens');
+            $vetorArquivo = explode('/', $nomeArquivo);
+            if ($categoria->imagem != "") {
+                Storage::delete("public/imagens/".$categoria->imagem);
+            }
+            $categoria->imagem = $vetorArquivo[2];
+        }
+
         $categoria->descricao = $request->input('descricao');
         $categoria->save();
         return redirect('/categoria/listar');
@@ -49,6 +62,10 @@ class CategoriaController extends Controller
 
     function excluir($id) {
         $categoria = Categoria::find($id);
+        if ($categoria->imagem != "") {
+            Storage::delete("public/imagens/".$categoria->imagem);
+        }
+
         $categoria->delete();
         return redirect('/categoria/listar');
     }

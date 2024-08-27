@@ -60,6 +60,9 @@ class NoticiaController extends Controller
 
     function excluir($id) {
         $noticia = Noticia::find($id);
+        if ($noticia->imagem != "") {
+            Storage::delete("public/imagens/".$noticia->imagem);
+        }
         $noticia->delete();
         return redirect('/noticia/listar');
 

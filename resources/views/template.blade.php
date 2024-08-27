@@ -125,6 +125,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/noticia/listar">Noticia</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/venda/listar">Venda 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/venda/listar2">Venda 2</a>
+        </li>
       </ul>
     </div>
   </div>
