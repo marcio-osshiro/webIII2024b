@@ -119,18 +119,37 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        @auth
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/categoria/listar">Categoria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/noticia/listar">Noticia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/venda/listar">Venda 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/venda/listar2">Venda 2</a>
+          </li>
+          <li class="nav-item">
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+
+              <x-responsive-nav-link :href="route('logout')"
+                      onclick="event.preventDefault();
+                                  this.closest('form').submit();">
+                  {{ __('Sair') }}
+              </x-responsive-nav-link>
+            </form>
+          </li>
+        @endauth
+        @guest
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/categoria/listar">Categoria</a>
+            <a class="nav-link active" aria-current="page" href="/login">Entrar</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/noticia/listar">Noticia</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/venda/listar">Venda 1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/venda/listar2">Venda 2</a>
-        </li>
+
+        @endguest
       </ul>
     </div>
   </div>
