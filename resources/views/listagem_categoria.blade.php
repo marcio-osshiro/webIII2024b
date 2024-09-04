@@ -3,6 +3,7 @@
 @section('content')
   <h1>Listagem de Categorias</h1>
   <a class="btn btn-primary" href="novo">Nova Categoria</a>
+  <a class="btn btn-primary" href="pdf">PDF</a>
   <table class="table table-bordered table-striped">
       <thead>
           <tr>

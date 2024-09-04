@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Http\Requests\CategoriaRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -74,5 +75,11 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
         return view("formulario_categoria", compact('categoria'));
 
+    }
+
+    function pdf() {
+        $categorias = Categoria::orderBy("descricao")->get();
+        $pdf = Pdf::loadView('pdf_categoria', compact('categorias'));
+        return $pdf->download('listagem_categoria.pdf'); 
     }
 }

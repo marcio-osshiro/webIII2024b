@@ -133,22 +133,19 @@
             <a class="nav-link active" aria-current="page" href="/venda/listar2">Venda 2</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/cliente/listar">Cliente</a>
+          </li>
+          <li class="nav-item">
             <form method="POST" action="{{ route('logout') }}">
               @csrf
-
-              <x-responsive-nav-link :href="route('logout')"
-                      onclick="event.preventDefault();
-                                  this.closest('form').submit();">
-                  {{ __('Sair') }}
-              </x-responsive-nav-link>
-            </form>
+              <button class="nav-link active">Sair</button>
+           </form>
           </li>
         @endauth
         @guest
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/login">Entrar</a>
         </li>
-
         @endguest
       </ul>
     </div>
